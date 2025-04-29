@@ -1,3 +1,10 @@
+## Do not use unless you have knowledge or testing of how actions will affect your enviorment.
+## This script will alter critical Windows update services.
+## No validation checks have been added.
+## USE AT YOUR OWN RISK
+
+
+
 # stop related update services
 Stop-Service -Name "wuauserv", "cryptsvc", "bits", "msiserver"
 
