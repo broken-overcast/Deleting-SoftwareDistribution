@@ -79,7 +79,7 @@ foreach ($item in $items) {
 Write-Host "Ownership tasks successfully started."
 
 # waiting for jobs to complete or timeout
-Write-Host "Waiting for all ownership tasks to complete..."
+Write-Host "Waiting for ownership tasks to complete..."
 $timeout = 300  # Timeout in seconds
 $startTime = Get-Date
 
