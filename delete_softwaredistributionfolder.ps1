@@ -1,7 +1,7 @@
 
 #### WARNING: THIS SCRIPT ALTERS CRITICAL WINDOWS UPDATE SERVICES.
 #### WARNING: THIS SCRIPT DELETES A FOLDER IN THE C:\Windows\ DIRECTORY.
-#### THIS VERSION HAS BEEN DRY RAN ON A VIRTUAL MACHINE. 05/01/2025 2:10PM CST
+#### THIS VERSION HAS BEEN DRY RAN ON A VM 05/01/2025 2:10PM CST
 
 #################################################################################################################################
 #                                                                                                                               #
@@ -10,10 +10,9 @@
 #     This script is designed to delete the SoftwareDistribution folder and its contents on Windows systems in a modular        #
 #     format that can be easily altered and reused depending on the environment and needs of the user.                          #
 #  Prerequisites:                                                                                                               #
-#     1. The script must be run with administrative privileges.                                                                 #
-#     2. The script is designed to be run on Windows systems only.                                                              #
-#     3. The script requires PowerShell to be installed on the system.                                                          #
-#     4. Powershell 5.0 or higher.                                                                                              #
+#     1. The script must be ran with administrative privileges.                                                                 #
+#     2. The script is designed to be ran on Windows systems only.                                                              #
+#     3. The script requires PowerShell to be installed on the system--version 5 or higher.                                                          #                                                                                              #
 #  Version 1.0.1 - 04/30/2025                                                                                                   #
 #  Log File Path: C:\Windows\config\logs\Delete.SoftwareDistribution.log                                                        #                                                                                                   #
 #                                                                                                                               #
@@ -32,39 +31,6 @@
 #                             ############################################                                                      #
 #                                                                                                                               #
 #################################################################################################################################
-
-###################################### Issues and Improvements #######################################
-# 1. Add logging to script to improve error handling and debugging. -COMPLETED                       #
-#    - Logging function and log file path added.                                                     #
-#    - Logging added to the following areas:                                                         #
-#       1. ACL                                                                                       #
-#       2. Service management                                                                        #
-#       3. File and folder ownership                                                                 #
-#       4. Folder deletion                                                                           #
-#       5. ACL restoration                                                                           #
-#       6. Final summary                                                                             #
-# 2. Add a function to check if the script is running with administrative privileges. -COMPLETED     #
-# 3. Improve on in-script documentation and comments. -COMPLETED                                     #
-#    - Added comments to explain the purpose of each section of the script.                          #
-#    - Refining to make more consise and clear.                                                      #
-# 4. Add post-job processing. -COMPLETED                                                             #
-######################################################################################################
-
-######################################################################################################
-#      NOTES FOR ANSIBLE USAGE:                                                                      #
-# 1. Uses exit codes to indicate success or failure. Will need fail_when                             #
-#    Module needed to enssure exit codes are logged correctly in Ansible:                            #
-#                                                                                                    #
-#      # Execute the PowerShell script and account for exit codes                                    #
-#    - name: Execute the PowerShell script                                                           #
-#      win_shell: |                                                                                  #
-#        powershell.exe -ExecutionPolicy Bypass -File C:\Scripts\Delete.SoftwareDistribution.ps1     #
-#      register: script_result                                                                       #
-#      failed_when: script_result.rc != 0 ## ensures that the script's exit code is checked ##       #
-#                                                                                                    #
-# 2. Requires administrative privileges to run.                                                      #
-######################################################################################################
-
 
 ## Part 1: User Warning and Confirmation
 # This section provides a warning to the user about the potential impact of running the script.
@@ -515,4 +481,4 @@ Write-Host "Log file saved at: $logFilePath" -ForegroundColor Green
 Write-Host "Exiting script, goodbye! :)" -ForegroundColor Green
 Log-Error -Message "Script completed successfully." -Level "INFO"
 exit 0
-# Fin~
+# End of script. :)
